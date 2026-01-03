@@ -2,6 +2,17 @@
 
 > **Fikirden Canlıya: Yazılım Süreçleri** dersi kapsamında geliştirilmiştir.
 
+---
+
+## 🎨 Proje Tanıtım
+
+<p align="center">
+  <img src="docs/images/flyer-front.png" alt="KampüsMarket Ön Sayfa" width="400"/>
+  <img src="docs/images/flyer-back.png" alt="KampüsMarket Arka Sayfa" width="400"/>
+</p>
+
+---
+
 ## 📌 Proje Hakkında
 
 ### Proje Adı
@@ -15,9 +26,9 @@
 | :-: | :--------- | :------------ |
 | 1 | **Özhan** | [23430070056] |
 | 2 | **Eren**   | [23430070056] |
-| 3 | **Safi**   | [23430070056] |
+| 3 | **Safi**   | [23430070029] |
 | 4 | **Burak**  | [23430070056] |
-| 5 | **Seyit**  | [23430070056] |
+| 5 | **Seyit**  | [23430070044] |
 
 ### Proje Özeti
 
@@ -539,9 +550,6 @@ Sistemi kullanan veya sistemle etkileşime giren tüm roller.
 | **Deployment**    | Vercel               | Latest   |
 
 ---
-
-
-
 
 ## 📁 Proje Yapısı
 
