@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Search, GraduationCap, Shield, MessageCircle, ArrowRight } from "lucide-react";
+import { Search, Shield, MessageCircle, ArrowRight, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CATEGORIES, APP_NAME } from "@/constants";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#458588] via-[#076678] to-[#3c3836] text-[#ebdbb2]">
         <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,transparent,rgba(255,255,255,0.5))]" />
@@ -184,35 +184,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-[#1d2021] text-[#a89984] py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2 text-[#ebdbb2]">
-              <GraduationCap className="h-6 w-6" />
-              <span className="font-bold text-xl">{APP_NAME}</span>
-            </div>
-            <div className="flex gap-6 text-sm">
-              <Link href="/about" className="hover:text-[#ebdbb2] transition-colors">
-                Hakkımızda
-              </Link>
-              <Link href="/contact" className="hover:text-[#ebdbb2] transition-colors">
-                İletişim
-              </Link>
-              <Link href="/terms" className="hover:text-[#ebdbb2] transition-colors">
-                Kullanım Koşulları
-              </Link>
-              <Link href="/privacy" className="hover:text-[#ebdbb2] transition-colors">
-                Gizlilik Politikası
-              </Link>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-[#504945] text-center text-sm">
-            © {new Date().getFullYear()} {APP_NAME}. Tüm hakları saklıdır.
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }
