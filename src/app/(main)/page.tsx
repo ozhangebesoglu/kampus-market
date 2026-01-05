@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Search, Shield, MessageCircle, ArrowRight, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -5,6 +9,16 @@ import { Input } from "@/components/ui/input";
 import { CATEGORIES, APP_NAME } from "@/constants";
 
 export default function Home() {
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -23,17 +37,19 @@ export default function Home() {
             </p>
 
             {/* Search Bar */}
-            <div className="flex gap-2 max-w-xl mx-auto bg-white rounded-lg p-2 shadow-xl">
+            <form onSubmit={handleSearch} className="flex gap-2 max-w-xl mx-auto bg-white rounded-lg p-2 shadow-xl">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <Input
                   type="search"
                   placeholder="Ne arıyorsunuz?"
                   className="pl-10 border-0 focus-visible:ring-0 text-gray-900"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <Button size="lg">Ara</Button>
-            </div>
+              <Button type="submit" size="lg">Ara</Button>
+            </form>
 
             {/* Stats */}
             <div className="flex justify-center gap-12 mt-12">
