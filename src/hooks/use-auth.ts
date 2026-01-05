@@ -10,10 +10,22 @@ export function useAuth() {
   const router = useRouter();
   const { user, isLoading, isAuthenticated, setUser, setLoading, logout } =
     useAuthStore();
-  const [supabase] = useState(() => createClient());
+  const [supabase] = useState(() => {
+    try {
+      return createClient();
+    } catch (error) {
+      console.error("Supabase client error:", error);
+      return null;
+    }
+  });
 
   // Kullanıcı bilgilerini yükle
   const loadUser = useCallback(async () => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+    
     try {
       setLoading(true);
       const {
@@ -65,6 +77,11 @@ export function useAuth() {
 
   // Auth state değişikliklerini dinle
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+    
     loadUser();
 
     const {
@@ -80,10 +97,11 @@ export function useAuth() {
     return () => {
       subscription.unsubscribe();
     };
-  }, [supabase, loadUser, logout]);
+  }, [supabase, loadUser, logout, setLoading]);
 
   // Çıkış yap
   const signOut = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
     logout();
     router.push("/");
